@@ -1,0 +1,59 @@
+body {
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h1, h2 {
+    text-align: center;
+    color: gold;
+}
+
+h1 {
+    margin-top: 50px;
+}
+
+.form-control {
+    text-align: center;
+}
+
+.btn {
+    margin-top: 1em;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2em;
+}
+
+.card img {
+    margin-top: 3em;
+    margin-bottom: 3em;
+    height: 17em;
+    width: 25em;
+}
+
+.card {
+    border-color: gold;
+    border-width: 10px;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: baseline ;
+    margin-top: 75px;
+}
+.login {
+    text-align: center;
+}
+a:link {
+    text-decoration: none;
+    background-color: blue;
+    color:white;
+    padding: 14px 25px;
+    display: inline-block;
+}
