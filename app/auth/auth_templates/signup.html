@@ -1,18 +1,50 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 
 
 
 {% block content %}
-<h1>Sign Up</h1>
+
+<div class="signup-background">
 <form method="POST">
-{{ form.hidden_tag() }}
+    
+    {{ signUpForm.hidden_tag() }}
 
-    {{ form.username(class="form-control",placeholder="Username") }}
-    {{ form.email(class="form-control", placeholder="Email") }}
-    {{ form.password(class="form-control",placeholder="Password") }}
-    {{ form.confirm_password(class="form-control", placeholder="Confirm Password") }}
-    {{ form.submit(class="btn btn-danger") }}
+    <div class="signup-container">
+        <div class="card-signup card" style="width: 25.5rem;">
+            <div class="card-body">
+                <h5 class="signup-title">Create your Pokemon Account!</h5>
+                <p class="first-name-text my-2"><b>First Name</b></p>
+                <div class="input-group flex-nowrap">
+                    {{ signUpForm.first_name(class='form-control', placeholder='Please enter your first name') }}
+                </div>
+                <p class="last-name-text my-2"><b>Last Name</b></p>
+                <div class="input-group flex-nowrap">
+                    {{ signUpForm.last_name(class='form-control', placeholder='Please enter your last name') }}
+                </div>
+                <p class="username-text my-2"><b>Username</b></p>
+                <div class="input-group flex-nowrap">
+                    {{ signUpForm.username(class='form-control', placeholder='Please enter a username') }}
+                </div>
+                <p class="email-text my-2"><b>Email Address</b></p>
+                <div class="input-group flex-nowrap">
+                    {{ signUpForm.email_address(class='form-control', placeholder='Please enter a valid email') }}
+                </div>
+                <div class="password-text">
+                    <p class="password my-2"><b>Password</b></p>
+                </div>
+                <div class="input-group flex-nowrap">
+                    {{ signUpForm.password(class='form-control', placeholder='Please enter a password') }}
+                </div>
+                <div class="confirm-password-text">
+                    <p class="password my-2"><b>Confirm Password</b></p>
+                </div>
+                {{ signUpForm.confirm_password(class='form-control', placeholder='Please re-enter your password') }}
+            </div>
+            <div class="sign-up-button">
+                {{ signUpForm.submit(class='btn btn-primary w-50 mb-2', value='Create Account') }}
+            </div>
+        </div>
+    </div>
 </form>
-
-
+</div>
 {% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="team_header"><h1 style="border-color:black ; border-width: 25px;">The Other Teams</h1></div>
+<div class="other-team-card-container">
+
+    {% for person, pokemons in d.items() %}
+
+    {% if pokemons|length == 5 and person != current_user.first_name %}
+    <div style="display:flex; align-items: center;">
+        <h1
+            style="display: flex; align-items: center; background-color:white; border: thin solid black; margin-left:10px;">
+            {{person}}'s Team</h1>
+    </div>
+    {% for pokemon in pokemons %}
+
+    <div class="card mb-3 other-team-card" style="max-width: 250px; margin: 10px;">
+        <div class="card-body">
+            <h4 class="card-title"><strong>{{pokemon.name}}</strong></h4><br />
+            <figure class="pokemon-card-img-container">
+                <figure class="pokemon-card-img1-container">
+                    <img src="{{pokemon.pokemon_img}}" class="img-fluid rounded-start"
+                        alt="picture of {{ pokemon.name }}">
+                </figure>
+            </figure>
+        </div>
+
+    </div>
+
+
+    {% endfor %}
+    {% if current_user.is_authenticated and current_user.team.all()|length == 5 %}
+    <div class="battle-button text-center mb-2" style="display: flex; align-items: center;">
+        <a class="btn btn-primary w-100" href="/battle/{{ current_user.first_name }}/{{ person }}">Battle Team</a>
+    </div>
+    {% else %}
+        <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div>
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+
+</div>
+{% endblock %}

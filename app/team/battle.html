@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="team_header"><h1 style="border-color:black ; border-width: 25px;">Let's BATTLE</h1></div>
+
+
+
+<div class="card-container">
+    <div style="display:flex; align-items: center;">
+        <h1
+            style="display: flex; align-items: center; background-color:white; border: thin solid black; margin-left:10px;">
+            {{ user1.first_name }}'s Team</br>Wins: {{ user1.wins }}<br>Losses: {{ user1.losses }}
+            <br>Ties: {{ user1.ties }}</h1>
+    </div>
+    {% for pokemon in team1 %}
+
+    <div class="card mb-3" style="max-width: 600px; margin: 10px;">
+        <div class="card-body">
+            <h4 class="card-title"><strong>{{pokemon.name}}</strong></h4><br />
+            <p class="card-text">Base Attack: {{pokemon.attack}}</p>
+            <p class="card-text">Base HP: {{pokemon.hp}}</p>
+            <p class="card-text">Base Defense: {{pokemon.defense}}</p>
+            <figure class="pokemon-card-img-container">
+                <figure class="pokemon-card-img1-container">
+                    <img src="{{pokemon.pokemon_img}}" class="img-fluid rounded-start"
+                        alt="picture of {{ pokemon.name }}">
+                </figure>
+            </figure>
+            <br /><br />
+            <p class="card-text"><small class="text-muted">Pokemon ID: {{pokemon.pokemon_id}}</small></p>
+        </div>
+    </div>
+
+
+
+{% endfor %}
+</div>
+
+{% if overall_points_team1 > overall_points_team2 %}
+{% set winner = user1 %}
+</br>
+
+<p class="winner-tag" style="text-align:center; font-size: 30px; margin-top: 1em; "><span style="background-color:red ;border: 10px solid black; ">{{ user1.first_name.upper() }} is the WINNER with {{overall_points_team1}} points vs. {{ user2.first_name.upper() }}'S {{overall_points_team2}} points</span></p>
+
+{% elif overall_points_team2 > overall_points_team1 %}
+{% set winner = user2 %}
+</br>
+<p class ='winner-tag' style="text-align:center; font-size: 30px; margin-top: 1em;"><span style="background-color:red ;border: 10px solid black; ">{{ user2.first_name.upper() }} is the WINNER with {{overall_points_team2}} points vs. {{ user1.first_name.upper() }}'S {{overall_points_team1}} points</span></p>
+{% endif %}
+
+
+<div class="card-container">
+    <div style="display:flex; align-items: center;">
+        <h1
+            style="display: flex; align-items: center; background-color:white; border: thin solid black; margin-left:10px;">
+            {{ user2.first_name }}'s Team</br>Wins: {{ user2.wins }}<br>Losses: {{ user2.losses }}
+        <br>Ties: {{ user2.ties }}</h1>
+    </div>
+    {% for pokemon in team2 %}
+
+    <div class="card mb-3" style="max-width: 600px; margin: 10px;">
+        <div class="card-body">
+            <h4 class="card-title"><strong>{{pokemon.name}}</strong></h4><br />
+            <p class="card-text">Base Attack: {{pokemon.attack}}</p>
+            <p class="card-text">Base HP: {{pokemon.hp}}</p>
+            <p class="card-text">Base Defense: {{pokemon.defense}}</p>
+            <figure class="pokemon-card-img-container">
+                <figure class="pokemon-card-img1-container">
+                    <img src="{{pokemon.pokemon_img}}" class="img-fluid rounded-start"
+                        alt="picture of {{ pokemon.name }}">
+                </figure>
+            </figure>
+            <br /><br />
+            <p class="card-text"><small class="text-muted">Pokemon ID: {{pokemon.pokemon_id}}</small></p>
+        </div>
+    </div>
+
+
+
+{% endfor %}
+</div>
+{% endblock %}

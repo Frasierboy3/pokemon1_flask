@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="team_header"><h1 style="border-color:black ; border-width: 25px;">Your Current Team<br>Battle Record: {{ current_user.wins }} - {{ current_user.losses }} - {{ current_user.ties }}</h1></div>
+
+
+
+<div class="card-container">
+    {% for pokemon in viewTeam %}
+
+    <div class="card mb-3" style="max-width: 600px; margin: 10px;">
+        <div class="card-body">
+            <h4 class="card-title"><strong>{{pokemon.name}}</strong></h4><br />
+            {% if pokemon.ability2 %}
+            <p class="card-text">Abilities: {{pokemon.ability}}, {{pokemon.ability2}}</p>
+            {% else %}
+            <p class="card-text">Abilities: {{pokemon.ability}}</p>
+            {% endif %}
+            <p class="card-text">Base Attack: {{pokemon.attack}}</p>
+            <p class="card-text">Base HP: {{pokemon.hp}}</p>
+            <p class="card-text">Base Defense: {{pokemon.defense}}</p>
+            <figure class="pokemon-card-img-container">
+                <figure class="pokemon-card-img1-container">
+                    <img src="{{pokemon.pokemon_img}}" class="img-fluid rounded-start"
+                        alt="picture of {{ pokemon.name }}">
+                </figure>
+            </figure>
+            <br /><br />
+            <p class="card-text"><small class="text-muted">Pokemon ID: {{pokemon.pokemon_id}}</small></p>
+        </div>
+        <div class="add-to-team-button text-center mb-2">
+            <a class="btn btn-primary w-75" href="/release/{{ pokemon.pokemon_id }}">Remove from Team</a>
+        </div>
+    </div>
+
+
+
+{% endfor %}
+</div>
+{% endblock %}

@@ -1,5 +1,43 @@
 {% extends 'base.html' %}
 
-{% block content %} 
-<h1>Log In</h1>
+{% block content %}
+<form method="POST">
+
+    {{ logInForm.hidden_tag() }}
+
+    <div class="signup-container">
+        <div class="card-signup card" style="width: 25.5rem;">
+            <div class="card-body">
+                <h5 class="signup-title">Login to your Pokemon Account!</h5>
+                <p class="username-text my-2"><b>Username</b></p>
+                <div class="input-group flex-nowrap">
+                    {{ logInForm.username(class='form-control', placeholder='Please enter your username') }}
+                </div>
+                <div class="password-text">
+                    <p class="password my-2"><b>Password</b></p>
+                </div>
+                <div class="input-group flex-nowrap">
+                    {{ logInForm.password(class='form-control', placeholder='Please enter your password') }}
+                </div>
+                <div class="sign-up-button">
+                    {{ logInForm.submit(class='btn btn-primary w-50 mb-2', value='Log In') }}
+                </div>
+            <div id="middle-bar">
+                <div class="left-bar">
+                    <hr />
+                </div>
+                <div class="middle-text">New To Pokemon?</div>
+                <div class="left-bar">
+                    <hr />
+                </div>
+            </div>
+            <div class="create-account">
+                <a href="/signup">
+                    <button type="button" class="btn btn-primary w-75">Create your Pokemon account</button>
+                </a>
+            </div>
+        </div>
+    </div>
+    </div>
+</form>
 {% endblock %}
